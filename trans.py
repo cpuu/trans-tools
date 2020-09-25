@@ -1,6 +1,11 @@
+from googletrans import Translator
 from selenium import webdriver
 from time import sleep
 
+
+def googlet(eng):
+    translator = Translator()
+    return (translator.translate(eng, src='en', dest='ko').text)
 
 def daumapi(text):
     # python 3에서는 print() 으로 사용합니다.
@@ -30,9 +35,14 @@ def daumapi(text):
 
 def main():
     # 대상 문장
-    text = "기호 실행은 대상 애플리케이션을 실행(또는 에뮬레이션)할 때 일반적인 동작에서 사용하듯 구체적인 값(concrete value)을 특정하는 것이 아니라, 대신 기호로 표현된 값(symbolic value)을 사용한다."
-    print(daumapi(text))
+    eng = "Symbex executes an application with symbolic values instead of the concrete values used when you normally run a program."
 
+    kor = googlet(eng)
+
+    print(kor)
+    
+    # text = "기호 실행은 대상 애플리케이션을 실행(또는 에뮬레이션)할 때 일반적인 동작에서 사용하듯 구체적인 값(concrete value)을 특정하는 것이 아니라, 대신 기호로 표현된 값(symbolic value)을 사용한다."
+    print(daumapi(kor))
     
 if __name__ == "__main__":
 	main()
