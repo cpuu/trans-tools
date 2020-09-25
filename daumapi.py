@@ -9,7 +9,7 @@ def daumapi(text):
     myoptions.add_argument('window-size=1920x1080')
     myoptions.add_argument("disable-gpu")
     
-    # https://sites.google.com/a/chromium.org/chromedriver/downloads 에서 알맞은 드라이버 다운로드 필요
+    # https://chromedriver.storage.googleapis.com/index.html 에서 알맞은 드라이버 다운로드 필요
     # 
     # 드라이버 로드
     driver = webdriver.Chrome('/home/cpuu/Downloads/chromedriver', options=myoptions)
