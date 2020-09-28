@@ -1,3 +1,5 @@
+# pip install googletrans
+# pip install selenium
 from googletrans import Translator
 from selenium import webdriver
 from time import sleep
