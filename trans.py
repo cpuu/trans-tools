@@ -2,6 +2,8 @@
 # pip install selenium
 from googletrans import Translator
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
 from time import sleep
 
 
@@ -19,18 +21,19 @@ def daumapi(text):
     # https://chromedriver.storage.googleapis.com/index.html 에서 알맞은 드라이버 다운로드 필요
     # 
     # 드라이버 로드
-    driver = webdriver.Chrome('/home/cpuu/Downloads/chromedriver', options=myoptions)
+    driver = webdriver.Chrome(executable_path="C:/Users/cpuu/Downloads/chromedriver_win32/chromedriver.exe")
+    
     # 맞춤법 검사기 url
     url = "https://search.daum.net/search?nil_suggest=btn&w=tot&DA=SBC&q=맞춤법+검사기"
     # url에서 정보 로드하기
     driver.get(url)
-	# 검사할 내용 입력
-    driver.find_element_by_xpath('//*[@id="tfGrammar"]').send_keys(text)
+    # 검사할 내용 입력
+    driver.find_element(By.ID, "tfGrammar").send_keys(text)
     # 검사하기 버튼 클릭
-    driver.find_element_by_xpath('//*[@id="btnGrammarCheck"]').click()
+    driver.find_element(By.ID, "btnGrammarCheck").click()
     sleep(1)
     # 검사된 맞춤법 출력
-    result = driver.find_element_by_xpath('//*[@id="contResult"]').text
+    result = driver.find_element(By.ID, "contResult").text
     # 드라이버 닫기
     driver.close()
     return result
